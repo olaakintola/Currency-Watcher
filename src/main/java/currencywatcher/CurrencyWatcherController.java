@@ -1,4 +1,4 @@
-package ie.ucd.CurrencyWatcher;
+package currencywatcher;
 
 import org.springframework.stereotype.Controller;
 
@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 
-public class CurrencyWatcherController {
+public class CurrencyWatcherController {
 	
-    @GetMapping("/index")
+	@GetMapping("/index")
 
-    public @ResponseBody String index() {
+	public @ResponseBody String index(){
 	
-        return "index.html";
-    }
+		return "Hello CurrencyWatcher";
 }
+}
+

@@ -1,4 +1,4 @@
-package currencywatcher.CurrencyWatcher;
+package currencywatcher;
 
 import org.springframework.boot.SpringApplication;
 
