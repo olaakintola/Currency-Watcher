@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 public class CurrencyWatcherController {
 	
-	@GetMapping("/index")
+	@GetMapping("/greeting")
 
-	public @ResponseBody String index(){
+	public String greeting(){
 	
-		return "Hello CurrencyWatcher";
-}
+		return "index.html";
+	}
 }
 
