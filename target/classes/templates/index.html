@@ -42,6 +42,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-8"><h3>Display of Daily Rates</h3>
+					<table>
+						<tr th:each="dailyRate : ${dailyRates}">
+							<td th:text="${dailyRate.currencyType}"></td>
+							<td th:text="${dailyRate.maxPrice}"></td>
+							<td th:text="${dailyRate.minPrice}"></td>
+							<td th:text="${dailyRate.avgPrice}"></td>
+							<td th:text="${dailyRate.curPrice}"></td>							
+						</tr>
+					</table>
 				</div>
 				<div class="col-4">
 					<h3>Enter your details</h3>
@@ -93,7 +102,7 @@
 						</div>
 						<div class="form-check form-check-inline">
 						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="currencyRadio3" value="option3">
-						  <label class="form-check-label" for="inlineRadio3">Euro</label>
+						  <label class="form-check-label" for="inlineRadio3">GB Pound</label>
 						</div>
 						<br><br>
 						<button type="submit" class="btn btn-primary">Submit</button>
