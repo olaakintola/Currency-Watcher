@@ -16,9 +16,9 @@ public class CurrencyWatcherController {
 
 	public String greeting(Model model){
 		ArrayList<CurrencyRate> dailyRates = new ArrayList<CurrencyRate>();
-		dailyRates.add(new CurrencyRate("Bitcoin", 8800, 8000, 8400, 8300));
-		dailyRates.add(new CurrencyRate("GB-Pound", 0.90, 0.50, 0.70, 0.60));
-		dailyRates.add(new CurrencyRate("US Dollars", 1.13, 1.11, 1.12, 1.12));
+		dailyRates.add(new CurrencyRate("Bitcoin ", 8800, 8000, 8400, 8300));
+		dailyRates.add(new CurrencyRate("GB-Pound ", 0.90, 0.50, 0.70, 0.60));
+		dailyRates.add(new CurrencyRate("US Dollars ", 1.13, 1.11, 1.12, 1.12));
 		model.addAttribute("dailyRates", dailyRates);
 		
 		return "index.html";
