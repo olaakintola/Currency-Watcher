@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Home</title>
+		<meta name = "viewport" content="width = device-width, intial-scale = 1">
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+		<style type="text/css">
+
+			.footer {
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				background-color: white;
+				color: black;
+				text-align: left;
+				padding-right: 1%;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<div class="container">
+			<table>
+				<tr th:each="userDetail : ${userDetails}">
+					<td th:text="${userDetail.firstName} "></td>
+					<td th:text="${userDetail.lastName} "></td>
+					<td th:text="${userDetail.emailAddress} "></td>
+					<td th:text="${userDetail.aboveBelow} "></td>
+					<td th:text="${userDetail.price} "></td>
+					<td th:text="${userDetail.currencyChoice} "></td>							
+							
+				</tr>
+			</table>
+			
+	
+		</div>
+		 <div class="footer">
+		 	<p>&copy; 2012 Email: <a href="mailto:olanipekun_akin@yahoo.co.uk">olanipekun_akin@yahoo.co.uk</a>.</p>
+ 		 </div>
+
+		<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	</body>
+	</html>

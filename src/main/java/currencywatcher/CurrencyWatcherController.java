@@ -2,15 +2,19 @@ package currencywatcher;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
 
 public class CurrencyWatcherController {
+	
+	@Autowired private UserDetails userDetails;
 	
 	@GetMapping("/greeting")
 
@@ -22,6 +26,26 @@ public class CurrencyWatcherController {
 		model.addAttribute("dailyRates", dailyRates);
 		
 		return "index.html";
+	}
+	
+	@PostMapping("/processForm")
+	
+	public String processForm(String firstName, String lastName, String emailAddress, String aboveBelow, int price, String currencyChoice) {
+		userDetails.setFirstName(firstName);
+		userDetails.setLastName(lastName);
+		userDetails.setEmailAddress(emailAddress);
+		userDetails.setAboveBelow(aboveBelow);
+		userDetails.setPrice(price);
+		userDetails.setCurrencyChoice(currencyChoice);
+
+		return "adduser.html";
+	}
+	
+	@GetMapping("/display")
+	public String display(Model model) {
+		model.addAttribute("userDetails", userDetails);
+		
+		return "display.html";
 	}
 }
 
