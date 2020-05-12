@@ -1,6 +1,9 @@
 package currencywatcher;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +33,7 @@ public class CurrencyWatcherController {
 	
 	@PostMapping("/processForm")
 	
-	public String processForm(String firstName, String lastName, String emailAddress, String aboveBelow, int price, String currencyChoice) {
+	public void processForm(String firstName, String lastName, String emailAddress, String aboveBelow, int price, String currencyChoice, HttpServletResponse response) throws IOException{
 		userDetails.setFirstName(firstName);
 		userDetails.setLastName(lastName);
 		userDetails.setEmailAddress(emailAddress);
@@ -38,7 +41,8 @@ public class CurrencyWatcherController {
 		userDetails.setPrice(price);
 		userDetails.setCurrencyChoice(currencyChoice);
 
-		return "adduser.html";
+//		return "adduser.html";
+		response.sendRedirect("/display");
 	}
 	
 	@GetMapping("/display")
