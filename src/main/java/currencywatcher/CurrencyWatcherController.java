@@ -19,7 +19,7 @@ public class CurrencyWatcherController {
 	
 	@Autowired private UserDetails userDetails;
 	
-	@GetMapping("/greeting")
+	@GetMapping("/")
 
 	public String greeting(Model model){
 		ArrayList<CurrencyRate> dailyRates = new ArrayList<CurrencyRate>();
