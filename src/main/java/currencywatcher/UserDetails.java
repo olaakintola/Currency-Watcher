@@ -1,19 +1,31 @@
 package currencywatcher;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
 
-@Component
+//@Component
+@Entity
 
 public class UserDetails {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String emailAddress;
 	private String aboveBelow;
 	private int price;
 	private String currencyChoice;
-	
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }	
 	public String getFirstName() {
 		return firstName;
 	}

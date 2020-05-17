@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 public class CurrencyWatcherController {
 	
-	@Autowired private UserDetails userDetails;
+	@Autowired private UserDetailsRepository userDetailsRepository;
 	
 	@GetMapping("/")
 
@@ -34,19 +34,21 @@ public class CurrencyWatcherController {
 	@PostMapping("/processForm")
 	
 	public void processForm(String firstName, String lastName, String emailAddress, String aboveBelow, int price, String currencyChoice, HttpServletResponse response) throws IOException{
+		UserDetails userDetails = new UserDetails();
 		userDetails.setFirstName(firstName);
 		userDetails.setLastName(lastName);
 		userDetails.setEmailAddress(emailAddress);
 		userDetails.setAboveBelow(aboveBelow);
 		userDetails.setPrice(price);
 		userDetails.setCurrencyChoice(currencyChoice);
+		userDetailsRepository.save(userDetails);
 
-//		return "adduser.html";
 		response.sendRedirect("/display");
 	}
 	
 	@GetMapping("/display")
-	public String display(Model model) {
+	public String display(Model model, Long id) {
+		UserDetails userDetails = userDetailsRepository.getOne(id);
 		model.addAttribute("userDetails", userDetails);
 		
 		return "display.html";
