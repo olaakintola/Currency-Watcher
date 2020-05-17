@@ -47,9 +47,9 @@ public class CurrencyWatcherController {
 	}
 	
 	@GetMapping("/display")
-	public String display(Model model, Long id) {
-		UserDetails userDetails = userDetailsRepository.getOne(id);
-		model.addAttribute("userDetails", userDetails);
+	public String display(Model model) {
+		
+		model.addAttribute("userDetails", userDetailsRepository.findAll());
 		
 		return "display.html";
 	}
