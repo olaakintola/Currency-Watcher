@@ -57,52 +57,52 @@
 					<form action="/processForm" method="post" >
 						<div class="row">
 							<div class="col">
-							<input type="text" class="form-control" placeholder="First name" name="firstName">
+							<input type="text" class="form-control" placeholder="First name" name="firstName" required="required">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control" placeholder="Last name" name="lastName">
+								<input type="text" class="form-control" placeholder="Last name" name="lastName" required="required">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="emailInput">Email address</label>
-							<input type="email" class="form-control" id="emailInput" placeholder="name@example.com" name="emailAddress">
+							<input type="email" class="form-control" id="emailInput" placeholder="name@example.com" name="emailAddress" required="required">
 						</div>
 						<div class="form-group">
 							<label for="formSelect1">Above or Below</label>
-							<select class="form-control" id="formSelect1" name="aboveBelow">
-								<option selected>Choose ...</option>
-								<option>Above</option>
-								<option>Below</option>
+							<select class="form-control" id="formSelect1" name="aboveBelow" required>
+								<option value="">Choose ...</option>
+								<option value="above">Above</option>
+								<option value="below">Below</option>
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="formSelect2">Price</label>
-							<select class="form-control" id="formSelect2" name="price">
-								<option selected>Choose ...</option>
-								<option>10</option>
-								<option>20</option>
-								<option>30</option>
-								<option>40</option>
-								<option>50</option>
-								<option>60</option>
-								<option>70</option>
-								<option>80</option>
-								<option>90</option>
-								<option>95</option>
+							<select class="form-control" id="formSelect2" name="price" required>
+								<option value="">Choose ...</option>
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="30">30</option>
+								<option value="40">40</option>
+								<option value="50">50</option>
+								<option value="60">60</option>
+								<option value="70">70</option>
+								<option value="80">80</option>
+								<option value="90">90</option>
+								<option value="95">95</option>
 
 							</select>
 						</div>
 						<div class="form-check form-check-inline">
 <!-- 							change name to currencyChoice
- -->						  <input class="form-check-input" type="radio" name="currencyChoice" id="currencyRadio1" value="Bitcoin">
+ -->						  <input class="form-check-input" type="radio" name="currencyChoice" id="currencyRadio1" value="Bitcoin" required="required">
 						  <label class="form-check-label" for="inlineRadio1" >Bitcoin</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="currencyChoice" id="currencyRadio2" value="US Dollars">
+						  <input class="form-check-input" type="radio" name="currencyChoice" id="currencyRadio2" value="US Dollars" required="required">
 						  <label class="form-check-label" for="inlineRadio2">US Dollars</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="currencyChoice" id="currencyRadio3" value="GB Pound">
+						  <input class="form-check-input" type="radio" name="currencyChoice" id="currencyRadio3" value="GB Pound" required="required">
 						  <label class="form-check-label" for="inlineRadio3">GB Pound</label>
 						</div>
 						<br><br>
