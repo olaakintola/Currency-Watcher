@@ -1,5 +1,6 @@
 package currencywatcher;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,13 +13,13 @@ import org.springframework.stereotype.Component;
 public class UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String firstName;
-	private String lastName;
-	private String emailAddress;
-	private String aboveBelow;
-	private int price;
-	private String currencyChoice;
+	@Column private Long id;
+	@Column private String firstName;
+	@Column private String lastName;
+	@Column private String emailAddress;
+	@Column private String aboveBelow;
+	@Column private int price;
+	@Column private String currencyChoice;
 
     public Long getId() {
         return id;
