@@ -1,51 +1,50 @@
 package currencywatcher;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class CurrencyRate {
 	
-	private String currencyType;
-	private double maxPrice;
-	private double minPrice;
-	private double avgPrice;
-	private double curPrice;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column private Long id;
+	@Column private double btcPrice;
+	@Column private double eurPrice;
+	@Column private double usdPrice;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public double getBtcPrice() {
+		return btcPrice;
+	}
+	public void setBtcPrice(double btcPrice) {
+		this.btcPrice = btcPrice;
+	}
+	public double getEurPrice() {
+		return eurPrice;
+	}
+	public void setEurPrice(double eurPrice) {
+		this.eurPrice = eurPrice;
+	}
+	public double getUsdPrice() {
+		return usdPrice;
+	}
+	public void setUsdPrice(double usdPrice) {
+		this.usdPrice = usdPrice;
+	}
+
+//	public CurrencyRate() {}
+//	public CurrencyRate(String currencyType, double maxPrice, double minPrice, double avgPrice, double curPrice) {
+//		this.currencyType = currencyType;
+//		this.curPrice = curPrice;
+//	}
 	
-	public CurrencyRate() {}
-	public CurrencyRate(String currencyType, double maxPrice, double minPrice, double avgPrice, double curPrice) {
-		this.currencyType = currencyType;
-		this.maxPrice = maxPrice;
-		this.minPrice = minPrice;
-		this.avgPrice = avgPrice;
-		this.curPrice = curPrice;
-	}
-
-	public String getCurrencyType() {
-		return currencyType;
-	}
-	public void setCurrencyType(String currencyType) {
-		this.currencyType = currencyType;
-	}
-	public double getMaxPrice() {
-		return maxPrice;
-	}
-	public void setMaxPrice(double maxPrice) {
-		this.maxPrice = maxPrice;
-	}
-	public double getMinPrice() {
-		return minPrice;
-	}
-	public void setMinPrice(double minPrice) {
-		this.minPrice = minPrice;
-	}
-	public double getAvgPrice() {
-		return avgPrice;
-	}
-	public void setAvgPrice(double avgPrice) {
-		this.avgPrice = avgPrice;
-	}
-	public double getCurPrice() {
-		return curPrice;
-	}
-	public void setCurPrice(double curPrice) {
-		this.curPrice = curPrice;
-	}	
-
+	
 }
