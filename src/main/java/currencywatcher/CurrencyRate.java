@@ -6,21 +6,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+//@Entity
 public class CurrencyRate {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column private Long id;
-	@Column private double btcPrice;
-	@Column private double eurPrice;
-	@Column private double usdPrice;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Column private Long id;
+	@JsonProperty("BTC")
+	private double btcPrice;
+	@JsonProperty("EUR")
+	private double eurPrice;
+	@JsonProperty("USD")
+	private double usdPrice;
+	
+//	public Long getId() {
+//		return id;
+//	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 	public double getBtcPrice() {
 		return btcPrice;
 	}
@@ -39,12 +45,7 @@ public class CurrencyRate {
 	public void setUsdPrice(double usdPrice) {
 		this.usdPrice = usdPrice;
 	}
-
-//	public CurrencyRate() {}
-//	public CurrencyRate(String currencyType, double maxPrice, double minPrice, double avgPrice, double curPrice) {
-//		this.currencyType = currencyType;
-//		this.curPrice = curPrice;
-//	}
+	
 	
 	
 }
