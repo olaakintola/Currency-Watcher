@@ -1,4 +1,4 @@
-package currencywatcher;
+package services;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
