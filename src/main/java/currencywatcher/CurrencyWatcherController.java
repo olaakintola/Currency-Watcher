@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-
-@RestController
-@RequestMapping("/myapp")
+@Controller
+//@RestController
+//@RequestMapping("/myapp")
 public class CurrencyWatcherController {
 	@Autowired private UserDetailsRepository userDetailsRepository;
-
-	@Autowired private CurrencyRateRepository currencyRateRepository;
+//	@Autowired private CurrencyRateRepository currencyRateRepository;
 	@Autowired private RestTemplate restTemplate;
 	
 	@GetMapping("/")
@@ -26,12 +25,12 @@ public class CurrencyWatcherController {
 		return "index.html";
 	}
 	
-	@RequestMapping("/currencydata")
+/*	@RequestMapping("/currencydata")
 	public String currencydata(){
 			String url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,DASH&tsyms=BTC,USD,EUR&api_key=088509e9d87298ed3da6e360e9b21ee3b78abf70109e1c640ac0e6b3b5a4a223";
 			String a = restTemplate.getForObject(url, String.class);
 			return a;
-	}
+	}*/
 	
 //	@PostMapping("/currencyData")
 //	public  currencyData(double btcPrice, double eurPrice, double usdPrice) {
