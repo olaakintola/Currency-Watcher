@@ -19,9 +19,9 @@ public class CurrencyService {
 	@Autowired private RestTemplate restTemplate;
 	
 	@RequestMapping("/currencydata")
-	public String currencydata(){
+	public Currencies currencydata(){
 			String url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,DASH&tsyms=BTC,USD,EUR&api_key=088509e9d87298ed3da6e360e9b21ee3b78abf70109e1c640ac0e6b3b5a4a223";
-			String a = restTemplate.getForObject(url, String.class);
+			Currencies a = restTemplate.getForObject(url, Currencies.class);
 			return a;
 	}
 

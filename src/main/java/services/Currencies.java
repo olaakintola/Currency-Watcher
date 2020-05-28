@@ -8,21 +8,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Currencies {
 	
 	@JsonProperty("ETH")
-	private CurrencyRate ETH;
+	private CurrencyRate eth;
 	@JsonProperty("DASH")
-	private CurrencyRate DASH;
+	private CurrencyRate dash;
 	
-	public CurrencyRate getETH() {
-		return ETH;
+	public CurrencyRate getEth() {
+		return eth;
 	}
-	public void setETH(CurrencyRate eTH) {
-		ETH = eTH;
+	public void setEth(CurrencyRate eth) {
+		this.eth = eth;
 	}
-	public CurrencyRate getDASH() {
-		return DASH;
+	public CurrencyRate getDash() {
+		return dash;
 	}
-	public void setDASH(CurrencyRate dASH) {
-		DASH = dASH;
+	public void setDash(CurrencyRate dash) {
+		this.dash = dash;
 	}
-
+	
+	
 }
