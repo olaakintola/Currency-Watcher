@@ -46,6 +46,8 @@ public class CurrencyRate {
 		this.usdPrice = usdPrice;
 	}
 	
-	
+	public String toString() {
+		return " btc "+btcPrice + " eur " + eurPrice + " usd" + usdPrice;
+	}
 	
 }

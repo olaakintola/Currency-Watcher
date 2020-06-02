@@ -25,5 +25,8 @@ public class Currencies {
 		this.dash = dash;
 	}
 	
-	
+	public String toString() {
+		return " ETH " + eth + "\n DASH " + dash;
+	}
+
 }

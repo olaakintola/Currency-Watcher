@@ -26,5 +26,9 @@ public class CurrencyService {
 			Currencies currencies = restTemplate.getForObject(url, Currencies.class);
 			return currencies;
 	}
+	
+	public String toString() {
+		return currencydata() + " ";
+	}
 
 }

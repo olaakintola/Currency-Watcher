@@ -1,5 +1,7 @@
 package currencywatcher;
 
+import org.springframework.stereotype.Service;
+
 public class CryptoCurrencyService {
 	
 	CurrencyService currencyservice;
@@ -10,6 +12,10 @@ public class CryptoCurrencyService {
 
 	public void setCurrencyservice(CurrencyService currencyservice) {
 		this.currencyservice = currencyservice;
+	}
+	
+	public String toString() {
+		return currencyservice + " .";
 	}
 	
 }

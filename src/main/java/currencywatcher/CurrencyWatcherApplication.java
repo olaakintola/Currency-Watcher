@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 public class CurrencyWatcherApplication {
 	
 	@Autowired CurrencyService currencyservice;
+//	@Autowired CryptoCurrencyService cryptocurrencyservice;
 	
 	@Bean
 	public RestTemplate getRestTemplate() {
@@ -28,7 +29,9 @@ public class CurrencyWatcherApplication {
 	
 	@Scheduled(fixedDelay = 2000L)
 	void getCurrencies() {
-		System.out.println("Now is " + currencyservice.currencydata() );
+//		System.out.println("Now is " + currencyservice );
+		System.out.println( currencyservice );
+//		System.out.println("Now is " + cryptocurrencyservice.getCurrencyservice().toString() );
 //		System.out.println("Now is " + new Date () );
 
 	}
