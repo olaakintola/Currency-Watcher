@@ -26,7 +26,7 @@ public class Currencies {
 	}
 	
 	public String toString() {
-		return " ETH " + eth + "\n DASH " + dash;
+		return "ETH " + eth + "\nDASH " + dash;
 	}
 
 }
