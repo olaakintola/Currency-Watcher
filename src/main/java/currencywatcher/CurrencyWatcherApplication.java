@@ -30,10 +30,7 @@ public class CurrencyWatcherApplication {
 	@Scheduled(fixedDelay = 20000L)
 	void getCurrencies() {
 		System.out.println("Now is " + new Date () );
-//		System.out.println("Now is " + currencyservice );
 		System.out.println( currencyservice );
-//		System.out.println("Now is " + cryptocurrencyservice.getCurrencyservice().toString() );
-//		System.out.println("Now is " + new Date () );
 		System.out.println("");
 
 	}

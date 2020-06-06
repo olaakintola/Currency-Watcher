@@ -29,12 +29,12 @@ public class CurrencyWatcherController {
 	
 	
 	@PostMapping("/processForm")
-	public void processForm(String firstName, String lastName, String emailAddress, String aboveBelow, int price, String currencyChoice, HttpServletResponse response) throws IOException{
+	public void processForm(String firstName, String lastName, String emailAddress, String currenciesType, int price, String currencyChoice, HttpServletResponse response) throws IOException{
 		UserDetails userDetails = new UserDetails();
 		userDetails.setFirstName(firstName);
 		userDetails.setLastName(lastName);
 		userDetails.setEmailAddress(emailAddress);
-		userDetails.setAboveBelow(aboveBelow);
+		userDetails.setCurrenciesType(currenciesType);
 		userDetails.setPrice(price);
 		userDetails.setCurrencyChoice(currencyChoice);
 		userDetailsRepository.save(userDetails);

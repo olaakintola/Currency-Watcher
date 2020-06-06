@@ -17,7 +17,7 @@ public class UserDetails {
 	@Column private String firstName;
 	@Column private String lastName;
 	@Column private String emailAddress;
-	@Column private String aboveBelow;
+	@Column private String currenciesType;
 	@Column private int price;
 	@Column private String currencyChoice;
 
@@ -45,11 +45,11 @@ public class UserDetails {
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
-	public String getAboveBelow() {
-		return aboveBelow;
+	public String getCurrenciesType() {
+		return currenciesType;
 	}
-	public void setAboveBelow(String aboveBelow) {
-		this.aboveBelow = aboveBelow;
+	public void setCurrenciesType(String currenciesType) {
+		this.currenciesType = currenciesType;
 	}
 	public int getPrice() {
 		return price;
