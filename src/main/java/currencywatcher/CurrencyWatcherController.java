@@ -21,6 +21,8 @@ public class CurrencyWatcherController {
 	@Autowired private UserDetailsRepository userDetailsRepository;
 	@Autowired private CurrencyEntityRepository currencyEntityRepository;
 	@Autowired private RestTemplate restTemplate;
+	@Autowired private CryptoCurrencyService cryptoCurrencyService;
+	
 	
 	@GetMapping("/")
 	public String greeting(Model model){
@@ -51,17 +53,8 @@ public class CurrencyWatcherController {
 	
 	@GetMapping("/storeApi")
 	public void storeApi( Currencies acurrency, HttpServletResponse response ) throws IOException {
-		String url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,DASH&tsyms=BTC,USD,EUR&api_key=088509e9d87298ed3da6e360e9b21ee3b78abf70109e1c640ac0e6b3b5a4a223";
-		acurrency = restTemplate.getForObject(url, Currencies.class);		
-		CurrencyEntity currencyEntity = new CurrencyEntity ();
-		currencyEntity.setEthBtc(acurrency.getEth().getBtcPrice());
-		currencyEntity.setEthEur(acurrency.getEth().getEurPrice());
-		currencyEntity.setEthUsd(acurrency.getEth().getUsdPrice());
-		currencyEntity.setDashBtc(acurrency.getDash().getBtcPrice());
-		currencyEntity.setDashEur(acurrency.getDash().getEurPrice());
-		currencyEntity.setDashUsd(acurrency.getDash().getUsdPrice());
-		currencyEntityRepository.save(currencyEntity);
 		
+		cryptoCurrencyService.updateCurrencies();
 		response.sendRedirect("/");
 	}
 }

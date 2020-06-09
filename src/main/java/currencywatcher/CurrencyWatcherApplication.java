@@ -1,5 +1,6 @@
 package currencywatcher;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ import services.Currencies;
 public class CurrencyWatcherApplication {
 	
 	@Autowired CurrencyService currencyservice;
-//	@Autowired CryptoCurrencyService cryptocurrencyservice;
+	@Autowired CryptoCurrencyService cryptoCurrencyService;
 	@Autowired private CurrencyEntityRepository currencyEntityRepository;
 	@Autowired private RestTemplate restTemplate;
 	
@@ -40,21 +41,19 @@ public class CurrencyWatcherApplication {
 	}
 	
 	@Scheduled(fixedDelay = 20000L)
-	void getCurrencies() {
+	void getCurrencies() throws IOException {
 		System.out.println("Now is " + new Date () );
 		System.out.println( currencyservice );
+		cryptoCurrencyService.updateCurrencies();	
 		System.out.println("");
 //		checkPrice();
 	}
 	
 	@Bean
-	public CommandLineRunner demo(CurrencyEntityRepository currencyEntityRepository) {
+	public CommandLineRunner demo(CurrencyEntityRepository currencyEntityRepository, CryptoCurrencyService cryptoCurrencyService) {
 		return (args) ->{
 			// save currencies
-			String url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,DASH&tsyms=BTC,USD,EUR&api_key=088509e9d87298ed3da6e360e9b21ee3b78abf70109e1c640ac0e6b3b5a4a223";
-			Currencies currencies = restTemplate.getForObject(url, Currencies.class);
-			currencyEntityRepository.save(currencies);
-			
+			cryptoCurrencyService.updateCurrencies();			
 			// fetch currencies
 			log.info("Currencies displayed");
 			for(CurrencyEntity eachCurrency: currencyEntityRepository.findAll() ) {
