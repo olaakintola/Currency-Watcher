@@ -62,4 +62,9 @@ public class CurrencyEntity {
 		this.dashUsd = dashUsd;
 	}
 	
+	public String toString() {
+		return "ethBTC "+ethBtc+" ethEUR "+ ethEur +" ethUSD "+ ethUsd +" dashBTC "+ dashBtc+" dashEUR "+ dashEur+" dashUSD "+ dashUsd;
+		
+	}
+	
 }
