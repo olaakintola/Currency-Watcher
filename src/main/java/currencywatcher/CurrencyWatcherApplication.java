@@ -26,6 +26,7 @@ public class CurrencyWatcherApplication {
 	@Autowired CurrencyService currencyservice;
 	@Autowired CryptoCurrencyService cryptoCurrencyService;
 	@Autowired private CurrencyEntityRepository currencyEntityRepository;
+	@Autowired private UserDetailsRepository userDetailsRepository;
 	@Autowired private RestTemplate restTemplate;
 	
 	@Bean
@@ -46,7 +47,14 @@ public class CurrencyWatcherApplication {
 		System.out.println( currencyservice );
 		cryptoCurrencyService.updateCurrencies();	
 		System.out.println("");
-//		checkPrice();
+		
+/*		for(CurrencyEntity eachCurrency: currencyEntityRepository.findAll() ) {
+			System.out.println(eachCurrency.toString());
+		}*/
+		
+//		cryptoCurrencyService.delete();
+		checkPrice();
+		System.out.println("");
 	}
 	
 	@Bean
@@ -64,14 +72,25 @@ public class CurrencyWatcherApplication {
 		
 	}
 	
-//	public void checkPrice(){
-//		List<CurrencyEntity> priceData = new ArrayList<CurrencyEntity>();
-//		priceData = currencyEntityRepository.findAll();
-//		for(int i = 0; i < priceData.size(); i++) {
-//			System.out.println(priceData.get(i).getDashBtc());
-//		}
-//		
-//	}
+	public void checkPrice(){
+/*		List<CurrencyEntity> priceData = new ArrayList<CurrencyEntity>();
+		priceData = currencyEntityRepository.findAll();
+		for(int i = 0; i < priceData.size(); i++) {
+			System.out.println(priceData.get(i).getDashBtc());
+		}*/
+		System.out.println("Displaying Content of Currency DB");
+		for(CurrencyEntity eachCurrency: currencyEntityRepository.findAll() ) {
+			System.out.println(eachCurrency.toString());
+		}
+		System.out.println("");
+		System.out.println("Displaying Content of User DB");
+		for(UserDetails eachUser: userDetailsRepository.findAll() ) {
+			System.out.println(eachUser.toString());
+		}
+		
+
+		
+	}
 	
 //	private void sendEmail() {
 //		

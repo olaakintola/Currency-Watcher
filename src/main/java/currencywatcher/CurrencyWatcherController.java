@@ -53,7 +53,7 @@ public class CurrencyWatcherController {
 	
 	@GetMapping("/storeApi")
 	public void storeApi( Currencies acurrency, HttpServletResponse response ) throws IOException {
-		
+
 		cryptoCurrencyService.updateCurrencies();
 		response.sendRedirect("/");
 	}

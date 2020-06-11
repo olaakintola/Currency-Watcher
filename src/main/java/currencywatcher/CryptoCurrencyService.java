@@ -28,7 +28,15 @@ public class CryptoCurrencyService {
 		currencyEntity.setDashEur(acurrency.getDash().getEurPrice());
 		currencyEntity.setDashUsd(acurrency.getDash().getUsdPrice());
 		currencyEntityRepository.save(currencyEntity);	
-
-}
+		}
+	
+	public void delete() {
+//		currencyEntityRepository.deleteById(id);
+		currencyEntityRepository.deleteAll();
+	}
+	
+//	public Long count() {
+//		return currencyEntityRepository.count();
+//	} 
 }
 	

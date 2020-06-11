@@ -63,5 +63,9 @@ public class UserDetails {
 	public void setCurrencyChoice(String currencyChoice) {
 		this.currencyChoice = currencyChoice;
 	}
+	
+	public String toString() {
+		return firstName+" "+ lastName+" "+" "+ emailAddress+" "+" "+currenciesType+" "+price+" "+ currencyChoice;
+	}
 
 }
