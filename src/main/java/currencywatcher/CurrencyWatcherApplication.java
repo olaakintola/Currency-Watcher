@@ -28,6 +28,8 @@ public class CurrencyWatcherApplication {
 	@Autowired private CurrencyEntityRepository currencyEntityRepository;
 	@Autowired private UserDetailsRepository userDetailsRepository;
 	@Autowired private RestTemplate restTemplate;
+	List<CurrencyEntity> lst = new ArrayList<CurrencyEntity>();
+	List<UserDetails> auser = new ArrayList<UserDetails>();
 	
 	@Bean
 	public RestTemplate getRestTemplate() {
@@ -55,6 +57,7 @@ public class CurrencyWatcherApplication {
 //		cryptoCurrencyService.delete();
 		checkPrice();
 		System.out.println("");
+		eachValue();
 	}
 	
 	@Bean
@@ -86,9 +89,55 @@ public class CurrencyWatcherApplication {
 		System.out.println("Displaying Content of User DB");
 		for(UserDetails eachUser: userDetailsRepository.findAll() ) {
 			System.out.println(eachUser.toString());
+		}	
+	}
+	
+	public void eachValue() {
+		auser = userDetailsRepository.findAll();
+		for(int j = 0; j < lst.size(); j++) {
+		for(int i = 0; i < auser.size(); i++) {
+//			System.out.println(auser.get(i).getCurrenciesType().toString() );
+			if( auser.get(i).getCurrenciesType().equalsIgnoreCase("etherium") ) {
+				System.out.println("I chose etherium");
+				System.out.println(auser.get(i).getCurrencyChoice().toString() );
+				if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
+					System.out.println("Bitcoin");
+					if(auser.get(i).getPrice() == (lst.get(j).getEthBtc() ) ) {
+						System.out.println("Send Email");
+					}
+				}else if( auser.get(i).getCurrencyChoice().equals("US Dollars")  ) {
+					if( auser.get(i).getPrice() == (lst.get(j).getEthUsd() )) {
+						System.out.println("Send Email");
+					}
+				}else {
+					if( auser.get(i).getPrice() == (lst.get(j).getEthEur() ) ) {
+						System.out.println("Send Email");
+					}
+				}
+			}
+			else {
+				if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
+					if(auser.get(i).getPrice() == (lst.get(j).getDashBtc() )) {
+						System.out.println("Send Email");
+					}
+				}else if( auser.get(i).getCurrencyChoice().equals("US Dollars") ) {
+					if( auser.get(i).getPrice() == (lst.get(j).getDashUsd() )  ) {
+						System.out.println("Send Email");
+					}
+				}else {
+					if( auser.get(i).getPrice() == (lst.get(j).getDashEur() ) ) {
+						System.out.println("Send Email");
+					}
+				}
+			}
+			
 		}
+	  }
 		
-
+/*		lst = currencyEntityRepository.findAll();
+		for(int i = 0; i < lst.size();i++) {
+			System.out.println(lst.get(i)  );
+		}*/
 		
 	}
 	
