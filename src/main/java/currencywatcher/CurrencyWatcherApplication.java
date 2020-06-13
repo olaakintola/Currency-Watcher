@@ -102,7 +102,7 @@ public class CurrencyWatcherApplication {
 	//			System.out.println(auser.get(i).getCurrenciesType().toString() );
 				if( auser.get(i).getCurrenciesType().equalsIgnoreCase("etherium") ) {
 					System.out.println("I chose etherium");
-					System.out.println(auser.get(i).getCurrencyChoice().toString() );
+//					System.out.println(auser.get(i).getCurrencyChoice().toString() );
 					if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
 						System.out.println("Bitcoin");
 						if(auser.get(i).getPrice() == (lst.get(j).getEthBtc() ) ) {
