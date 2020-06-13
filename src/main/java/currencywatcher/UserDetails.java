@@ -18,7 +18,8 @@ public class UserDetails {
 	@Column private String lastName;
 	@Column private String emailAddress;
 	@Column private String currenciesType;
-	@Column private int price;
+	@Column private String aboveBelow;
+	@Column private double price;
 	@Column private String currencyChoice;
 
     public Long getId() {
@@ -51,10 +52,10 @@ public class UserDetails {
 	public void setCurrenciesType(String currenciesType) {
 		this.currenciesType = currenciesType;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public String getCurrencyChoice() {
@@ -63,9 +64,14 @@ public class UserDetails {
 	public void setCurrencyChoice(String currencyChoice) {
 		this.currencyChoice = currencyChoice;
 	}
-	
+	public String getAboveBelow() {
+		return aboveBelow;
+	}
+	public void setAboveBelow(String aboveBelow) {
+		this.aboveBelow = aboveBelow;
+	}
 	public String toString() {
-		return firstName+" "+ lastName+" "+" "+ emailAddress+" "+" "+currenciesType+" "+price+" "+ currencyChoice;
+		return firstName+" "+ lastName+" "+" "+ emailAddress+" "+" "+currenciesType+" "+ aboveBelow +" "+price+" "+ currencyChoice;
 	}
 
 }
