@@ -47,24 +47,24 @@ public class CurrencyWatcherApplication {
 	void getCurrencies() throws IOException {
 		System.out.println("Now is " + new Date () );
 		System.out.println( currencyservice );
-		cryptoCurrencyService.updateCurrencies();	
+//		cryptoCurrencyService.updateCurrencies();	
 		System.out.println("");
 		
 /*		for(CurrencyEntity eachCurrency: currencyEntityRepository.findAll() ) {
 			System.out.println(eachCurrency.toString());
 		}*/
-		
+		eachValue();		
 //		cryptoCurrencyService.delete();
-		checkPrice();
+//		checkPrice();
 		System.out.println("");
-		eachValue();
+
 	}
 	
 	@Bean
 	public CommandLineRunner demo(CurrencyEntityRepository currencyEntityRepository, CryptoCurrencyService cryptoCurrencyService) {
 		return (args) ->{
 			// save currencies
-			cryptoCurrencyService.updateCurrencies();			
+//			cryptoCurrencyService.updateCurrencies();			
 			// fetch currencies
 			log.info("Currencies displayed");
 			for(CurrencyEntity eachCurrency: currencyEntityRepository.findAll() ) {
@@ -92,48 +92,51 @@ public class CurrencyWatcherApplication {
 		}	
 	}
 	
-	public void eachValue() {
+	public void eachValue() throws IOException {
+		cryptoCurrencyService.updateCurrencies();	
+		System.out.println(currencyEntityRepository.count() );
 		auser = userDetailsRepository.findAll();
+		lst = currencyEntityRepository.findAll();
 		for(int j = 0; j < lst.size(); j++) {
-		for(int i = 0; i < auser.size(); i++) {
-//			System.out.println(auser.get(i).getCurrenciesType().toString() );
-			if( auser.get(i).getCurrenciesType().equalsIgnoreCase("etherium") ) {
-				System.out.println("I chose etherium");
-				System.out.println(auser.get(i).getCurrencyChoice().toString() );
-				if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
-					System.out.println("Bitcoin");
-					if(auser.get(i).getPrice() == (lst.get(j).getEthBtc() ) ) {
-						System.out.println("Send Email");
-					}
-				}else if( auser.get(i).getCurrencyChoice().equals("US Dollars")  ) {
-					if( auser.get(i).getPrice() == (lst.get(j).getEthUsd() )) {
-						System.out.println("Send Email");
-					}
-				}else {
-					if( auser.get(i).getPrice() == (lst.get(j).getEthEur() ) ) {
-						System.out.println("Send Email");
-					}
-				}
-			}
-			else {
-				if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
-					if(auser.get(i).getPrice() == (lst.get(j).getDashBtc() )) {
-						System.out.println("Send Email");
-					}
-				}else if( auser.get(i).getCurrencyChoice().equals("US Dollars") ) {
-					if( auser.get(i).getPrice() == (lst.get(j).getDashUsd() )  ) {
-						System.out.println("Send Email");
-					}
-				}else {
-					if( auser.get(i).getPrice() == (lst.get(j).getDashEur() ) ) {
-						System.out.println("Send Email");
+			for(int i = 0; i < auser.size(); i++) {
+	//			System.out.println(auser.get(i).getCurrenciesType().toString() );
+				if( auser.get(i).getCurrenciesType().equalsIgnoreCase("etherium") ) {
+					System.out.println("I chose etherium");
+					System.out.println(auser.get(i).getCurrencyChoice().toString() );
+					if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
+						System.out.println("Bitcoin");
+						if(auser.get(i).getPrice() == (lst.get(j).getEthBtc() ) ) {
+							System.out.println("Send Email for ethbtc");
+						}
+					}else if( auser.get(i).getCurrencyChoice().equals("US Dollars")  ) {
+						if( auser.get(i).getPrice() == (lst.get(j).getEthUsd() )) {
+							System.out.println("Send Email for ethusd");
+						}
+					}else {
+						if( auser.get(i).getPrice() == (lst.get(j).getEthEur() ) ) {
+							System.out.println("Send Email for etheur");
+						}
 					}
 				}
-			}
-			
-		}
-	  }
-		
+				else {
+					if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
+						if(auser.get(i).getPrice() == (lst.get(j).getDashBtc() )) {
+							System.out.println("Send Email for dashbtc");
+						}
+					}else if( auser.get(i).getCurrencyChoice().equals("US Dollars") ) {
+						if( auser.get(i).getPrice() == (lst.get(j).getDashUsd() )  ) {
+							System.out.println("Send Email for dash usd");
+						}
+					}else {
+						if( auser.get(i).getPrice() == (lst.get(j).getDashEur() ) ) {
+							System.out.println("Send Email for dasheur");
+						}
+					}
+				}
+			}	
+	}
+	cryptoCurrencyService.delete();
+
 /*		lst = currencyEntityRepository.findAll();
 		for(int i = 0; i < lst.size();i++) {
 			System.out.println(lst.get(i)  );
