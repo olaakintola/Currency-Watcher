@@ -105,32 +105,73 @@ public class CurrencyWatcherApplication {
 //					System.out.println(auser.get(i).getCurrencyChoice().toString() );
 					if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
 						System.out.println("Bitcoin");
-						if(auser.get(i).getPrice() == (lst.get(j).getEthBtc() ) ) {
-							System.out.println("Send Email for ethbtc");
+						if(auser.get(i).getAboveBelow().equals("above") ) {
+							if(auser.get(i).getPrice() < (lst.get(j).getEthBtc() ) ) {
+								System.out.println("Send Email for above ethbtc");
+								}
+							}else if(auser.get(i).getAboveBelow().equals("below")) {
+								if(auser.get(i).getPrice() > (lst.get(j).getEthBtc() ) ) {
+									System.out.println("Send email for below ethbtc");
+									}
+								}
+						}else if( auser.get(i).getCurrencyChoice().equals("US Dollars")  ) {
+							if(auser.get(i).getAboveBelow().equals("above") ) {
+								if(auser.get(i).getPrice() < (lst.get(j).getEthUsd() ) ) {
+									System.out.println("Send Email for above ethusd");
+									}
+								}else if(auser.get(i).getAboveBelow().equals("below")) {
+									if(auser.get(i).getPrice() > (lst.get(j).getEthUsd() ) ) {
+										System.out.println("Send email for below ethusd");
+										}
+									}
+							}else if( auser.get(i).getCurrencyChoice().equals("EUR")  ) {
+								if(auser.get(i).getAboveBelow().equals("above") ) {
+									if(auser.get(i).getPrice() < (lst.get(j).getEthEur() ) ) {
+										System.out.println("Send Email for above etheur");
+										}
+									}
+								else if(auser.get(i).getAboveBelow().equals("below")) {
+									if(auser.get(i).getPrice() > (lst.get(j).getEthEur() ) ) {
+										System.out.println("Send email for below etheur");
+								}
+							}
 						}
-					}else if( auser.get(i).getCurrencyChoice().equals("US Dollars")  ) {
-						if( auser.get(i).getPrice() == (lst.get(j).getEthUsd() )) {
-							System.out.println("Send Email for ethusd");
-						}
-					}else {
-						if( auser.get(i).getPrice() == (lst.get(j).getEthEur() ) ) {
-							System.out.println("Send Email for etheur");
-						}
-					}
 				}
-				else {
+			}else if( auser.get(i).getCurrenciesType().equalsIgnoreCase("dash") )  {
 					if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
-						if(auser.get(i).getPrice() == (lst.get(j).getDashBtc() )) {
-							System.out.println("Send Email for dashbtc");
+						if(auser.get(i).getAboveBelow().equals("above") ) {
+							if(auser.get(i).getPrice() < (lst.get(j).getDashBtc() ) ) {
+								System.out.println("Send Email for above dashbtc");
+								}
+							}
+						else if(auser.get(i).getAboveBelow().equals("below")) {
+							if(auser.get(i).getPrice() > (lst.get(j).getDashBtc() ) ) {
+								System.out.println("Send email for below dashbtc");
+							}
 						}
 					}else if( auser.get(i).getCurrencyChoice().equals("US Dollars") ) {
-						if( auser.get(i).getPrice() == (lst.get(j).getDashUsd() )  ) {
-							System.out.println("Send Email for dash usd");
+						if(auser.get(i).getAboveBelow().equals("above") ) {
+							if(auser.get(i).getPrice() < (lst.get(j).getDashUsd() ) ) {
+								System.out.println("Send Email for above dashusd");
+								}
+							}
+						else if(auser.get(i).getAboveBelow().equals("below")) {
+							if(auser.get(i).getPrice() > (lst.get(j).getEthBtc() ) ) {
+								System.out.println("Send email for below dashusd");
+							}
 						}
-					}else {
-						if( auser.get(i).getPrice() == (lst.get(j).getDashEur() ) ) {
-							System.out.println("Send Email for dasheur");
+					}else if( auser.get(i).getCurrencyChoice().equals("EUR")  ) {
+						if(auser.get(i).getAboveBelow().equals("above") ) {
+							if(auser.get(i).getPrice() < (lst.get(j).getDashEur() ) ) {
+								System.out.println("Send Email for above dasheur");
+								}
+							}
+						else if(auser.get(i).getAboveBelow().equals("below")) {
+							if(auser.get(i).getPrice() > (lst.get(j).getDashEur() ) ) {
+								System.out.println("Send email for below dasheur");
+							}
 						}
+					
 					}
 				}
 			}	
