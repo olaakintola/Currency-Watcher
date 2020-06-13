@@ -136,28 +136,25 @@ public class CurrencyWatcherApplication {
 								}
 							}
 						}
-				}
-			}else if( auser.get(i).getCurrenciesType().equalsIgnoreCase("dash") )  {
-					if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
-						if(auser.get(i).getAboveBelow().equals("above") ) {
-							if(auser.get(i).getPrice() < (lst.get(j).getDashBtc() ) ) {
+					}else if( auser.get(i).getCurrenciesType().equalsIgnoreCase("dash") )  {
+						if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
+							if(auser.get(i).getAboveBelow().equals("above") ) {
+								if(auser.get(i).getPrice() < (lst.get(j).getDashBtc() ) ) {
 								System.out.println("Send Email for above dashbtc");
 								}
-							}
-						else if(auser.get(i).getAboveBelow().equals("below")) {
-							if(auser.get(i).getPrice() > (lst.get(j).getDashBtc() ) ) {
-								System.out.println("Send email for below dashbtc");
-							}
-						}
-					}else if( auser.get(i).getCurrencyChoice().equals("US Dollars") ) {
-						if(auser.get(i).getAboveBelow().equals("above") ) {
-							if(auser.get(i).getPrice() < (lst.get(j).getDashUsd() ) ) {
-								System.out.println("Send Email for above dashusd");
+								}else if(auser.get(i).getAboveBelow().equals("below")) {
+									if(auser.get(i).getPrice() > (lst.get(j).getDashBtc() ) ) {
+									System.out.println("Send email for below dashbtc");
+									}
 								}
-							}
-						else if(auser.get(i).getAboveBelow().equals("below")) {
-							if(auser.get(i).getPrice() > (lst.get(j).getEthBtc() ) ) {
-								System.out.println("Send email for below dashusd");
+						}else if( auser.get(i).getCurrencyChoice().equals("US Dollars") ) {
+							if(auser.get(i).getAboveBelow().equals("above") ) {
+								if(auser.get(i).getPrice() < (lst.get(j).getDashUsd() ) ) {
+									System.out.println("Send Email for above dashusd");
+								}
+							}else if(auser.get(i).getAboveBelow().equals("below")) {
+								if(auser.get(i).getPrice() > (lst.get(j).getEthBtc() ) ) {
+									System.out.println("Send email for below dashusd");
 							}
 						}
 					}else if( auser.get(i).getCurrencyChoice().equals("EUR")  ) {
@@ -165,28 +162,26 @@ public class CurrencyWatcherApplication {
 							if(auser.get(i).getPrice() < (lst.get(j).getDashEur() ) ) {
 								System.out.println("Send Email for above dasheur");
 								}
-							}
-						else if(auser.get(i).getAboveBelow().equals("below")) {
-							if(auser.get(i).getPrice() > (lst.get(j).getDashEur() ) ) {
-								System.out.println("Send email for below dasheur");
+							}else if(auser.get(i).getAboveBelow().equals("below")) {
+								if(auser.get(i).getPrice() > (lst.get(j).getDashEur() ) ) {
+									System.out.println("Send email for below dasheur");
 							}
 						}
-					
 					}
 				}
-			}	
-	}
-	cryptoCurrencyService.delete();
+			}
+		}
+		cryptoCurrencyService.delete();
 
 /*		lst = currencyEntityRepository.findAll();
 		for(int i = 0; i < lst.size();i++) {
 			System.out.println(lst.get(i)  );
 		}*/
-		
+	}
 	}
 	
 //	private void sendEmail() {
 //		
 //	}
 
-}
+
