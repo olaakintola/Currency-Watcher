@@ -153,7 +153,7 @@ public class CurrencyWatcherApplication {
 									System.out.println("Send Email for above dashusd");
 								}
 							}else if(auser.get(i).getAboveBelow().equals("below")) {
-								if(auser.get(i).getPrice() > (lst.get(j).getEthBtc() ) ) {
+								if(auser.get(i).getPrice() > (lst.get(j).getDashUsd() ) ) {
 									System.out.println("Send email for below dashusd");
 							}
 						}
@@ -177,11 +177,11 @@ public class CurrencyWatcherApplication {
 		for(int i = 0; i < lst.size();i++) {
 			System.out.println(lst.get(i)  );
 		}*/
-	}
+	
 	}
 	
 //	private void sendEmail() {
 //		
 //	}
-
+}
 
