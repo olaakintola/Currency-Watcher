@@ -95,6 +95,7 @@ public class CurrencyWatcherApplication {
 	
 	public void eachValue() throws IOException {
 		String emailSent = "Email Sent";
+		UserDetails tempUser = new UserDetails ();
 		cryptoCurrencyService.updateCurrencies();	
 		System.out.println(currencyEntityRepository.count() );
 		auser = userDetailsRepository.findAll();
@@ -111,7 +112,8 @@ public class CurrencyWatcherApplication {
 							if(auser.get(i).getPrice() < (lst.get(j).getEthBtc() ) ) {
 								if(auser.get(i).getEmailSent().equals("No Email Sent")) {
 									System.out.println("Send Email for above ethbtc");
-									emailNotification.sendEmail((UserDetails) auser);
+									tempUser = auser.get(i);
+									emailNotification.sendEmail( tempUser);
 //									auser.get(i).setEmailSent(emailSent);
 //									userDetailsRepository.save(auser);	// try saveAll, if save doesnt work
 									}
@@ -120,7 +122,8 @@ public class CurrencyWatcherApplication {
 								if(auser.get(i).getPrice() > (lst.get(j).getEthBtc() ) ) {
 									if(auser.get(i).getEmailSent().equals("No Email Sent")) {
 										System.out.println("Send email for below ethbtc");
-										emailNotification.sendEmail((UserDetails) auser);
+										tempUser = auser.get(i);
+										emailNotification.sendEmail( tempUser);
 //										auser.get(i).setEmailSent(emailSent);
 //										userDetailsRepository.save(auser);	// try saveAll, if save doesnt work			
 										}
