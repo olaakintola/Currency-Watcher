@@ -28,6 +28,7 @@ public class CurrencyWatcherApplication {
 	@Autowired private CurrencyEntityRepository currencyEntityRepository;
 	@Autowired private UserDetailsRepository userDetailsRepository;
 	@Autowired private RestTemplate restTemplate;
+	@Autowired private EmailNotification emailNotification;
 	List<CurrencyEntity> lst = new ArrayList<CurrencyEntity>();
 	List<UserDetails> auser = new ArrayList<UserDetails>();
 	
@@ -93,6 +94,7 @@ public class CurrencyWatcherApplication {
 	}
 	
 	public void eachValue() throws IOException {
+		String emailSent = "Email Sent";
 		cryptoCurrencyService.updateCurrencies();	
 		System.out.println(currencyEntityRepository.count() );
 		auser = userDetailsRepository.findAll();
@@ -107,11 +109,21 @@ public class CurrencyWatcherApplication {
 						System.out.println("Bitcoin");
 						if(auser.get(i).getAboveBelow().equals("above") ) {
 							if(auser.get(i).getPrice() < (lst.get(j).getEthBtc() ) ) {
-								System.out.println("Send Email for above ethbtc");
+								if(auser.get(i).getEmailSent().equals("No Email Sent")) {
+									System.out.println("Send Email for above ethbtc");
+									emailNotification.sendEmail((UserDetails) auser);
+//									auser.get(i).setEmailSent(emailSent);
+//									userDetailsRepository.save(auser);	// try saveAll, if save doesnt work
+									}
 								}
 							}else if(auser.get(i).getAboveBelow().equals("below")) {
 								if(auser.get(i).getPrice() > (lst.get(j).getEthBtc() ) ) {
-									System.out.println("Send email for below ethbtc");
+									if(auser.get(i).getEmailSent().equals("No Email Sent")) {
+										System.out.println("Send email for below ethbtc");
+										emailNotification.sendEmail((UserDetails) auser);
+//										auser.get(i).setEmailSent(emailSent);
+//										userDetailsRepository.save(auser);	// try saveAll, if save doesnt work			
+										}
 									}
 								}
 						}else if( auser.get(i).getCurrencyChoice().equals("US Dollars")  ) {

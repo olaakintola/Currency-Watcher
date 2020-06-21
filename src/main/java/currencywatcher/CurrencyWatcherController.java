@@ -32,6 +32,7 @@ public class CurrencyWatcherController {
 	
 	@PostMapping("/processForm")
 	public void processForm(String firstName, String lastName, String emailAddress, String currenciesType, double price, String aboveBelow, String currencyChoice, HttpServletResponse response) throws IOException{
+		String emailSent = "No Email Sent";
 		UserDetails userDetails = new UserDetails();
 		userDetails.setFirstName(firstName);
 		userDetails.setLastName(lastName);
@@ -40,6 +41,7 @@ public class CurrencyWatcherController {
 		userDetails.setPrice(price);
 		userDetails.setCurrencyChoice(currencyChoice);
 		userDetails.setAboveBelow(aboveBelow);
+		userDetails.setEmailSent(emailSent);
 		userDetailsRepository.save(userDetails);
 
 		response.sendRedirect("/display");

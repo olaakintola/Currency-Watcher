@@ -21,6 +21,7 @@ public class UserDetails {
 	@Column private String aboveBelow;
 	@Column private double price;
 	@Column private String currencyChoice;
+	@Column private String emailSent;
 
     public Long getId() {
         return id;
@@ -69,6 +70,12 @@ public class UserDetails {
 	}
 	public void setAboveBelow(String aboveBelow) {
 		this.aboveBelow = aboveBelow;
+	}
+	public String getEmailSent() {
+		return emailSent;
+	}
+	public void setEmailSent(String emailSent) {
+		this.emailSent = emailSent;
 	}
 	public String toString() {
 		return firstName+" "+ lastName+" "+" "+ emailAddress+" "+" "+currenciesType+" "+ aboveBelow +" "+price+" "+ currencyChoice;
