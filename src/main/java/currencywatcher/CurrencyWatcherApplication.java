@@ -114,8 +114,9 @@ public class CurrencyWatcherApplication {
 									System.out.println("Send Email for above ethbtc");
 									tempUser = auser.get(i);
 									emailNotification.sendEmail( tempUser);
+									tempUser.setEmailSent(emailSent);
 //									auser.get(i).setEmailSent(emailSent);
-//									userDetailsRepository.save(auser);	// try saveAll, if save doesnt work
+									userDetailsRepository.save( tempUser);	// try saveAll, if save doesnt work
 									}
 								}
 							}else if(auser.get(i).getAboveBelow().equals("below")) {
@@ -124,8 +125,9 @@ public class CurrencyWatcherApplication {
 										System.out.println("Send email for below ethbtc");
 										tempUser = auser.get(i);
 										emailNotification.sendEmail( tempUser);
+										tempUser.setEmailSent(emailSent);
 //										auser.get(i).setEmailSent(emailSent);
-//										userDetailsRepository.save(auser);	// try saveAll, if save doesnt work			
+										userDetailsRepository.save( tempUser );	// try saveAll, if save doesnt work			
 										}
 									}
 								}
