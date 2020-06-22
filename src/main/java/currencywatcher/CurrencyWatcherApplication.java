@@ -134,71 +134,134 @@ public class CurrencyWatcherApplication {
 						}else if( auser.get(i).getCurrencyChoice().equals("US Dollars")  ) {
 							if(auser.get(i).getAboveBelow().equals("above") ) {
 								if(auser.get(i).getPrice() < (lst.get(j).getEthUsd() ) ) {
-									System.out.println("Send Email for above ethusd");
-									}
-								}else if(auser.get(i).getAboveBelow().equals("below")) {
-									if(auser.get(i).getPrice() > (lst.get(j).getEthUsd() ) ) {
+									if(auser.get(i).getEmailSent().equals("No Email Sent") ) {
+										System.out.println("Send Email for above ethusd");
+										tempUser = auser.get(i);
+										emailNotification.sendEmail( tempUser);
+										tempUser.setEmailSent(emailSent);
+	//									auser.get(i).setEmailSent(emailSent);
+										userDetailsRepository.save( tempUser);
+									}	
+								}	
+							}else if(auser.get(i).getAboveBelow().equals("below")) {
+								if(auser.get(i).getPrice() > (lst.get(j).getEthUsd() ) ) {
+									if( auser.get(i).getEmailSent().equals("No Email Sent")  ) {
 										System.out.println("Send email for below ethusd");
-										}
-									}
-							}else if( auser.get(i).getCurrencyChoice().equals("EUR")  ) {
+										tempUser = auser.get(i);
+										emailNotification.sendEmail( tempUser);
+										tempUser.setEmailSent(emailSent);
+	//									auser.get(i).setEmailSent(emailSent);
+										userDetailsRepository.save( tempUser);
+									}	
+								}		
+							}	
+						}else if( auser.get(i).getCurrencyChoice().equals("EUR")  ) {
 								if(auser.get(i).getAboveBelow().equals("above") ) {
 									if(auser.get(i).getPrice() < (lst.get(j).getEthEur() ) ) {
-										System.out.println("Send Email for above etheur");
+										if( auser.get(i).getEmailSent().equals("No Email Sent")  ) {
+											System.out.println("Send Email for above etheur");
+											tempUser = auser.get(i);
+											emailNotification.sendEmail( tempUser);
+											tempUser.setEmailSent(emailSent);
+//											auser.get(i).setEmailSent(emailSent);
+											userDetailsRepository.save( tempUser);
+											}
 										}
 									}
 								else if(auser.get(i).getAboveBelow().equals("below")) {
 									if(auser.get(i).getPrice() > (lst.get(j).getEthEur() ) ) {
-										System.out.println("Send email for below etheur");
+										if(  auser.get(i).getEmailSent().equals("No Email Sent") ) {
+											System.out.println("Send email for below etheur");
+											tempUser = auser.get(i);
+											emailNotification.sendEmail( tempUser);
+											tempUser.setEmailSent(emailSent);
+	//										auser.get(i).setEmailSent(emailSent);
+											userDetailsRepository.save( tempUser);
+										}	
+									}
 								}
 							}
-						}
 					}else if( auser.get(i).getCurrenciesType().equalsIgnoreCase("dash") )  {
 						if(auser.get(i).getCurrencyChoice().equals("Bitcoin") ) {
 							if(auser.get(i).getAboveBelow().equals("above") ) {
 								if(auser.get(i).getPrice() < (lst.get(j).getDashBtc() ) ) {
-								System.out.println("Send Email for above dashbtc");
-								}
-								}else if(auser.get(i).getAboveBelow().equals("below")) {
+									if( auser.get(i).getEmailSent().equals("No Email Sent") ) { 
+										System.out.println("Send Email for above dashbtc");
+										tempUser = auser.get(i);
+										emailNotification.sendEmail( tempUser);
+										tempUser.setEmailSent(emailSent);
+	//									auser.get(i).setEmailSent(emailSent);
+										userDetailsRepository.save( tempUser);
+									}
+								}	
+							}else if(auser.get(i).getAboveBelow().equals("below")) {
 									if(auser.get(i).getPrice() > (lst.get(j).getDashBtc() ) ) {
-									System.out.println("Send email for below dashbtc");
+										if( auser.get(i).getEmailSent().equals("No Email Sent")  ) {
+											System.out.println("Send email for below dashbtc");
+											tempUser = auser.get(i);
+											emailNotification.sendEmail( tempUser);
+											tempUser.setEmailSent(emailSent);
+		//									auser.get(i).setEmailSent(emailSent);
+											userDetailsRepository.save( tempUser);
+										}
 									}
 								}
 						}else if( auser.get(i).getCurrencyChoice().equals("US Dollars") ) {
 							if(auser.get(i).getAboveBelow().equals("above") ) {
 								if(auser.get(i).getPrice() < (lst.get(j).getDashUsd() ) ) {
-									System.out.println("Send Email for above dashusd");
+									if( auser.get(i).getEmailSent().equals("No Email Sent") ) {
+										System.out.println("Send Email for above dashusd");
+										tempUser = auser.get(i);
+										emailNotification.sendEmail( tempUser);
+										tempUser.setEmailSent(emailSent);
+	//									auser.get(i).setEmailSent(emailSent);
+										userDetailsRepository.save( tempUser);
+									}
 								}
 							}else if(auser.get(i).getAboveBelow().equals("below")) {
 								if(auser.get(i).getPrice() > (lst.get(j).getDashUsd() ) ) {
-									System.out.println("Send email for below dashusd");
-							}
-						}
-					}else if( auser.get(i).getCurrencyChoice().equals("EUR")  ) {
-						if(auser.get(i).getAboveBelow().equals("above") ) {
-							if(auser.get(i).getPrice() < (lst.get(j).getDashEur() ) ) {
-								System.out.println("Send Email for above dasheur");
+									if( auser.get(i).getEmailSent().equals("No Email Sent")  ) {	
+										System.out.println("Send email for below dashusd");
+										tempUser = auser.get(i);
+										emailNotification.sendEmail( tempUser);
+										tempUser.setEmailSent(emailSent);
+	//									auser.get(i).setEmailSent(emailSent);
+										userDetailsRepository.save( tempUser);
+									}	
+								}
+							}	
+						}else if( auser.get(i).getCurrencyChoice().equals("EUR")  ) {
+							if(auser.get(i).getAboveBelow().equals("above") ) {
+								if(auser.get(i).getPrice() < (lst.get(j).getDashEur() ) ) {
+									if( auser.get(i).getEmailSent().equals("No Email Sent") ) {
+										System.out.println("Send Email for above dasheur");
+										tempUser = auser.get(i);
+										emailNotification.sendEmail( tempUser);
+										tempUser.setEmailSent(emailSent);
+	//									auser.get(i).setEmailSent(emailSent);
+										userDetailsRepository.save( tempUser);	
+									}
 								}
 							}else if(auser.get(i).getAboveBelow().equals("below")) {
 								if(auser.get(i).getPrice() > (lst.get(j).getDashEur() ) ) {
-									System.out.println("Send email for below dasheur");
+									if( auser.get(i).getEmailSent().equals("No Email Sent") ) {
+										System.out.println("Send email for below dasheur");
+										tempUser = auser.get(i);
+										emailNotification.sendEmail( tempUser);
+										tempUser.setEmailSent(emailSent);
+	//									auser.get(i).setEmailSent(emailSent);
+										userDetailsRepository.save( tempUser);
+										
+									}
+								}
 							}
 						}
 					}
 				}
 			}
-		}
+		
 		cryptoCurrencyService.delete();
-
-/*		lst = currencyEntityRepository.findAll();
-		for(int i = 0; i < lst.size();i++) {
-			System.out.println(lst.get(i)  );
-		}*/
-	
 	}
 	
-//	private void sendEmail() {
-//		
-//	}
 }
 
