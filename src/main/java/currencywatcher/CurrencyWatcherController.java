@@ -1,6 +1,9 @@
 package currencywatcher;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +25,7 @@ public class CurrencyWatcherController {
 	@Autowired private CurrencyEntityRepository currencyEntityRepository;
 	@Autowired private RestTemplate restTemplate;
 	@Autowired private CryptoCurrencyService cryptoCurrencyService;
-	
+	@Autowired private EmailValidator emailValidator;
 	
 	@GetMapping("/")
 	public String greeting(Model model){
@@ -32,6 +35,8 @@ public class CurrencyWatcherController {
 	
 	@PostMapping("/processForm")
 	public void processForm(String firstName, String lastName, String emailAddress, String currenciesType, double price, String aboveBelow, String currencyChoice, HttpServletResponse response) throws IOException{
+
+		if( emailValidator.validUser(emailAddress, firstName, lastName) ) {
 		String emailSent = "No Email Sent";
 		UserDetails userDetails = new UserDetails();
 		userDetails.setFirstName(firstName);
@@ -43,9 +48,14 @@ public class CurrencyWatcherController {
 		userDetails.setAboveBelow(aboveBelow);
 		userDetails.setEmailSent(emailSent);
 		userDetailsRepository.save(userDetails);
-
 		response.sendRedirect("/display");
+		
+		}else {
+			response.sendRedirect("/adduser");
+		}
+		
 	}
+	
 	
 	@GetMapping("/display")
 	public String display(Model model) {
@@ -60,5 +70,12 @@ public class CurrencyWatcherController {
 		cryptoCurrencyService.updateCurrencies();
 		response.sendRedirect("/");
 	}
+	
+	@GetMapping("/adduser")
+	public String changeEmail(Model model) {
+		return "adduser.html";
+	}
+	
+
 }
 
