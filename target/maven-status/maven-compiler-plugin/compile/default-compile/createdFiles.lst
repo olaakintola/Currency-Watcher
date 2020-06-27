@@ -1,0 +1,11 @@
+currencywatcher\CurrencyEntity.class
+services\Currencies.class
+currencywatcher\UserDetails.class
+currencywatcher\EmailValidator.class
+currencywatcher\UserDetailsRepository.class
+currencywatcher\CurrencyWatcherApplication.class
+currencywatcher\EmailNotification.class
+currencywatcher\CurrencyService.class
+currencywatcher\CurrencyEntityRepository.class
+currencywatcher\CryptoCurrencyService.class
+services\CurrencyRate.class

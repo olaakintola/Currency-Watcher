@@ -9,6 +9,10 @@ import javax.persistence.Id;
 @Entity
 public class CurrencyEntity {
 
+	private final String EURO_CONSTANT = "EUR";
+	private final String US_DOLLAR_CONSTANT = "US Dollars";
+	private final String BITCOIN_CONSTANT = "Bitcoin";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column private Long id;
@@ -18,7 +22,7 @@ public class CurrencyEntity {
 	@Column private double dashBtc;
 	@Column private double dashEur;
 	@Column private double dashUsd;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -66,5 +70,27 @@ public class CurrencyEntity {
 		return "ethBTC "+ethBtc+" ethEUR "+ ethEur +" ethUSD "+ ethUsd +" dashBTC "+ dashBtc+" dashEUR "+ dashEur+" dashUSD "+ dashUsd;
 		
 	}
-	
+
+	public double grabValue(String currenciesType, String currencyChoice) {
+		if(currenciesType.equals("dash")) {
+			if(currencyChoice.equals(EURO_CONSTANT)) {
+				return getDashEur();
+			} else if(currencyChoice.equals(US_DOLLAR_CONSTANT)) {
+				return getDashUsd();
+			} else if(currencyChoice.equals(BITCOIN_CONSTANT)) {
+				return getDashBtc();
+			}
+		}
+		if(currenciesType.equals("etherium")) {
+			if(currencyChoice.equals(EURO_CONSTANT)) {
+				return getEthEur();
+			} else if(currencyChoice.equals(US_DOLLAR_CONSTANT)) {
+				return getEthUsd();
+			} else if(currencyChoice.equals(BITCOIN_CONSTANT)) {
+				return getEthBtc();
+			}
+		}
+		// EXCLUDE OTHERS
+		throw new IllegalArgumentException("No value found for inputs: " + currenciesType + " " + currencyChoice);
+	}
 }

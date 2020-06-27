@@ -1,4 +1,4 @@
-package currencywatcher;
+package currencywatcher.userdetails;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -79,6 +79,14 @@ public class UserDetails {
 	}
 	public String toString() {
 		return firstName+" "+ lastName+" "+" "+ emailAddress+" "+" "+currenciesType+" "+ aboveBelow +" "+price+" "+ currencyChoice;
+	}
+
+	public boolean isAbove() {
+    	return "above".equalsIgnoreCase(getAboveBelow());
+	}
+
+	public boolean isBelow() {
+		return "below".equalsIgnoreCase(getAboveBelow());
 	}
 
 }
