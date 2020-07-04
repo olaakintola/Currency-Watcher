@@ -37,20 +37,19 @@ public class CurrencyWatcherController {
 	public void processForm(String firstName, String lastName, String emailAddress, String currenciesType, double price, String aboveBelow, String currencyChoice, HttpServletResponse response) throws IOException{
 
 		if( emailValidator.validUser(emailAddress, firstName, lastName) ) {
-		String emailSent = "No Email Sent";
-		UserDetails userDetails = new UserDetails();
-		userDetails.setFirstName(firstName);
-		userDetails.setLastName(lastName);
-		userDetails.setEmailAddress(emailAddress);
-		userDetails.setCurrenciesType(currenciesType);
-		userDetails.setPrice(price);
-		userDetails.setCurrencyChoice(currencyChoice);
-		userDetails.setAboveBelow(aboveBelow);
-		userDetails.setEmailSent(emailSent);
-		userDetailsRepository.save(userDetails);
-		response.sendRedirect("/display");
-		
-		}else {
+			String emailSent = "No Email Sent";
+			UserDetails userDetails = new UserDetails();
+			userDetails.setFirstName(firstName);
+			userDetails.setLastName(lastName);
+			userDetails.setEmailAddress(emailAddress);
+			userDetails.setCurrenciesType(currenciesType);
+			userDetails.setPrice(price);
+			userDetails.setCurrencyChoice(currencyChoice);
+			userDetails.setAboveBelow(aboveBelow);
+			userDetails.setEmailSent(emailSent);
+			userDetailsRepository.save(userDetails);
+			response.sendRedirect("/display");
+			}else {
 			response.sendRedirect("/adduser");
 		}
 		
