@@ -17,7 +17,7 @@ public class EmailNotification {
         SimpleMailMessage message = new SimpleMailMessage(); 
         message.setTo(userDetails.getEmailAddress()); 
         message.setFrom("olamoiakin@gmail.com");
-        message.setSubject( "CryptoCurrency Price Notification " ); 
+        message.setSubject( "CryptoCurrency Price Notification" ); 
         message.setText(" The price that was chosen by you is " + userDetails.getAboveBelow() + " " + userDetails.getPrice() + ".");
        
         javaMailSender.send(message);

@@ -52,20 +52,17 @@ public class CurrencyWatcherController {
 			}else {
 			response.sendRedirect("/adduser");
 		}
-		
 	}
 	
 	
 	@GetMapping("/display")
 	public String display(Model model) {
 		model.addAttribute("userDetails", userDetailsRepository.findAll());
-		
 		return "display.html";
 	}
 	
 	@GetMapping("/storeApi")
 	public void storeApi( Currencies acurrency, HttpServletResponse response ) throws IOException {
-
 		cryptoCurrencyService.updateCurrencies();
 		response.sendRedirect("/");
 	}
@@ -75,6 +72,5 @@ public class CurrencyWatcherController {
 		return "adduser.html";
 	}
 	
-
 }
 

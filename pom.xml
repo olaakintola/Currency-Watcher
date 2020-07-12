@@ -68,6 +68,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+<!-- 		added this line for testing email
+ -->		 <dependency>
+            <groupId>com.icegreen</groupId>
+            <artifactId>greenmail</artifactId>
+            <version>1.5.5</version>
+            <scope>test</scope>
+        </dependency>
 		
 	<dependency>
         <groupId>org.assertj</groupId>
