@@ -45,9 +45,9 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-<!-- 			    <scope>test</scope>
- -->			<version>1.4.199</version>
+<!-- 		put runtime in scope when done with test
+ -->			    <scope>test</scope>
+			<version>1.4.199</version>
 		</dependency>
 		
 		<dependency>

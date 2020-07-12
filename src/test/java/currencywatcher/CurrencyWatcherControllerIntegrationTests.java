@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.test.web.servlet.MockMvc;
@@ -21,6 +22,7 @@ import services.Currencies;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {CurrencyWatcherApplication.class})
+@TestPropertySource(locations="classpath:application.properties")
 class CurrencyWatcherControllerIntegrationTests {
 
 	@LocalServerPort private int port;
@@ -40,9 +42,6 @@ class CurrencyWatcherControllerIntegrationTests {
 	
 	@Test
 	public void testServiceCall() {
-//		this.server.expect(requestTo("https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,DASH&tsyms=BTC,USD,EUR&api_key=088509e9d87298ed3da6e360e9b21ee3b78abf70109e1c640ac0e6b3b5a4a223") ).andRespond(withSuccess("<data></data>", MediaType.TEXT_PLAIN) );
-//		String responseCurrencyService = client.toString();
-//		assertThat(responseCurrencyService).isEqualTo("<data></data>");
 		String url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,DASH&tsyms=BTC,USD,EUR&api_key=088509e9d87298ed3da6e360e9b21ee3b78abf70109e1c640ac0e6b3b5a4a223";
 		Currencies response = testRestTemplate.getForObject(url, Currencies.class);
 		assertThat(client.currencydata() ).isEqualTo(response);
@@ -51,7 +50,6 @@ class CurrencyWatcherControllerIntegrationTests {
 	@Test
 	public void testFindAll() {
 		List<UserDetails> users = userDetailsRepository.findAll();
-//		assertNull(userDetailsRepository.findAll(), "UserDetailsRepository must be null");
 		Assert.isNull(users, "UserDetailsRepository must be null");
 	}
 	
@@ -60,13 +58,9 @@ class CurrencyWatcherControllerIntegrationTests {
 		CryptoCurrencyService cryptoCurrencyService = new CryptoCurrencyService ();
 		cryptoCurrencyService.updateCurrencies();
 		cryptoCurrencyService.delete();
-//		assertNull(currencyEntityRepository.findAll(), "CryptocurrencyService isn't working as it should");
 		Assert.isNull(currencyEntityRepository.findAll(), "CryptocurrencyService isn't working as it should");
 	}
 	
-/*	@Test
-	void contextLoads() {
-	}*/
 	@Test
 	public void testProcessForm() throws Exception {
 		String emailSent = "No Email Sent";

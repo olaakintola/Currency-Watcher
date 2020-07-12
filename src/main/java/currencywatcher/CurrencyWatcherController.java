@@ -32,7 +32,6 @@ public class CurrencyWatcherController {
 		return "index.html";
 	}
 	
-	
 	@PostMapping("/processForm")
 	public void processForm(String firstName, String lastName, String emailAddress, String currenciesType, double price, String aboveBelow, String currencyChoice, HttpServletResponse response) throws IOException{
 
@@ -53,7 +52,6 @@ public class CurrencyWatcherController {
 			response.sendRedirect("/adduser");
 		}
 	}
-	
 	
 	@GetMapping("/display")
 	public String display(Model model) {
