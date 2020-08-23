@@ -30,4 +30,9 @@ public class SmtpServerRule extends ExternalResource {
 		super.after();
 		smtpServer.stop();
 	}
+
+	public String toString(){
+		return smtpServer + "";
+	}
+
 }

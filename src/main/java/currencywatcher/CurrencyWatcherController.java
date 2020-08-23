@@ -29,6 +29,7 @@ public class CurrencyWatcherController {
 	
 	@GetMapping("/")
 	public String greeting(Model model){
+//		model.addAttribute("currencyEntity", currencyEntityRepository.findAll());
 		return "index.html";
 	}
 	
