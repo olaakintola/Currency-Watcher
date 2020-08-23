@@ -80,5 +80,71 @@ public class UserDetails {
 	public String toString() {
 		return firstName+" "+ lastName+" "+" "+ emailAddress+" "+" "+currenciesType+" "+ aboveBelow +" "+price+" "+ currencyChoice;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((aboveBelow == null) ? 0 : aboveBelow.hashCode());
+		result = prime * result + ((currenciesType == null) ? 0 : currenciesType.hashCode());
+		result = prime * result + ((currencyChoice == null) ? 0 : currencyChoice.hashCode());
+		result = prime * result + ((emailAddress == null) ? 0 : emailAddress.hashCode());
+		result = prime * result + ((emailSent == null) ? 0 : emailSent.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserDetails other = (UserDetails) obj;
+		if (aboveBelow == null) {
+			if (other.aboveBelow != null)
+				return false;
+		} else if (!aboveBelow.equals(other.aboveBelow))
+			return false;
+		if (currenciesType == null) {
+			if (other.currenciesType != null)
+				return false;
+		} else if (!currenciesType.equals(other.currenciesType))
+			return false;
+		if (currencyChoice == null) {
+			if (other.currencyChoice != null)
+				return false;
+		} else if (!currencyChoice.equals(other.currencyChoice))
+			return false;
+		if (emailAddress == null) {
+			if (other.emailAddress != null)
+				return false;
+		} else if (!emailAddress.equals(other.emailAddress))
+			return false;
+		if (emailSent == null) {
+			if (other.emailSent != null)
+				return false;
+		} else if (!emailSent.equals(other.emailSent))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		return true;
+	}
+	
+	
 
 }

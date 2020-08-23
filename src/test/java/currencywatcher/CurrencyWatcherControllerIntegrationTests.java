@@ -3,10 +3,15 @@ package currencywatcher;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.TestPropertySource;
@@ -32,9 +37,15 @@ class CurrencyWatcherControllerIntegrationTests {
 	@Autowired CurrencyEntityRepository currencyEntityRepository;
 	@Autowired PriceCheck priceCheck;
 	@Autowired CryptoCurrencyService cryptoCurrencyService;
+	@MockBean EmailNotification emailnotification;
 	
 	List<UserDetails> auser = new ArrayList<UserDetails>();
 	List<CurrencyEntity> acurrebcy = new ArrayList<CurrencyEntity>();
+	
+	@Before
+	public void initialize(){
+		userDetailsRepository.deleteAll();
+	}
 	
 //	@Test
 //	public void testHTTPRequest() throws Exception {
@@ -42,6 +53,7 @@ class CurrencyWatcherControllerIntegrationTests {
 //	}
 	
 	@Test
+	@Ignore("This is for manual testing")
 	public void testServiceCall() {
 		String url = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,DASH&tsyms=BTC,USD,EUR&api_key=088509e9d87298ed3da6e360e9b21ee3b78abf70109e1c640ac0e6b3b5a4a223";
 		Currencies response = testRestTemplate.getForObject(url, Currencies.class);
@@ -104,12 +116,12 @@ class CurrencyWatcherControllerIntegrationTests {
 		priceCheck.eachValue();
 		
 		auser = userDetailsRepository.findAll();
-		UserDetails tempUser = new UserDetails();
-		tempUser = auser.get(0);
+		UserDetails tempUser = auser.get(0);
 		String emailStatus = tempUser.getEmailSent();
 		String expectedStatus = "Email Sent";
 		
-	    assertEquals(emailStatus, expectedStatus);		
+		Mockito.verify(emailnotification).sendEmail(tempUser);;
+	    assertEquals(emailStatus, expectedStatus);	
 	}
 	
 }
